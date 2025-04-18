@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 import Auth from "./AuthContext";
 
 export default function Posts() {
-    const { token } = useContext(Auth.Context);
+    const { token} = useContext(Auth.Context);
     console.log("Your token is", token)
     const [posts, setPosts] = useState([]);
     async function getPosts() {
@@ -28,16 +29,23 @@ export default function Posts() {
         console.log("Post was deleted");
         getPosts()
     }
+
+
     
     return (
         <>
-            <Header/>
+            <Header />
+            <div>
+                 <Link to="/create-post">Create Post</Link>
+            </div>
+           
             <h1>All posts</h1>
             {posts.length > 0 ? <ul>
                 {posts.map((post) => (
                     <li key={post.id}>
                         {post.title}
                         <button onClick={() => handleDelete(post.id)}>Delete post</button>
+                        <Link to={`/editPost/${post.id}`}>Edit Post</Link>
                     </li>
                 ))}
             </ul> : <h1>Loading...</h1>}

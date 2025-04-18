@@ -7,6 +7,7 @@ import Auth from './components/AuthContext.jsx';
 import CreatePost from './components/CreatePost.jsx';
 import Posts from './components/Posts.jsx';
 import SinglePost from './components/SinglePost.jsx';
+import EditPost from './components/EditPost.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
   {
     path: "/posts/:id",
     element: <SinglePost/>
+  },
+  {
+    path: "/editPost/:id",
+    element: <EditPost/>
   }
 ])
 
