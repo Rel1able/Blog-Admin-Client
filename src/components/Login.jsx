@@ -5,7 +5,7 @@ export default function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const { user, setUser } = useContext(Auth.Context);
+    const { user, setUser, setToken } = useContext(Auth.Context);
 
     async function handleSubmit(e) {
         e.preventDefault();
@@ -19,8 +19,13 @@ export default function Login() {
         const data = await response.json();
                 console.log(data);
         const userData = data.user;
-            setUser(userData);
-            localStorage.setItem("user", JSON.stringify(userData));
+        const token = data.token;
+        console.log(token);
+        setUser(userData);
+        setToken(token);
+        localStorage.setItem("user", JSON.stringify(userData));
+        localStorage.setItem("token", token);
+        
         if (userData) {
             navigate("/");
         }

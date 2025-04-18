@@ -4,7 +4,9 @@ import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from "./components/Login.jsx";
 import Auth from './components/AuthContext.jsx';
-
+import CreatePost from './components/CreatePost.jsx';
+import Posts from './components/Posts.jsx';
+import SinglePost from './components/SinglePost.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,6 +15,18 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <Login/>,
+  },
+  {
+    path: "/create-post",
+    element: <CreatePost/>
+  },
+  {
+    path: "/posts",
+    element: <Posts/>
+  },
+  {
+    path: "/posts/:id",
+    element: <SinglePost/>
   }
 ])
 
