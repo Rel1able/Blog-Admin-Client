@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Comments from "./Comments"
 import Header from "./Header";
 import Auth from "./AuthContext";
+import convertDate from "../utils/convertDate";
 export default function SinglePost() {
     const { id } = useParams();
     const [post, setPost] = useState([]);
@@ -11,9 +12,6 @@ export default function SinglePost() {
 
     const { token } = useContext(Auth.Context);
 
-    function convertDate(date) {
-        return new Date(date).toLocaleDateString("en-GB").split("/").join(".")
-    }
     useEffect(() => {
         async function getPost(id) {
             const res = await fetch(`https://blog-api-rrvr.onrender.com/posts/${id}`);
@@ -51,8 +49,10 @@ export default function SinglePost() {
         <>
             <Header/>
             <h1>Single Post</h1>
+            {post.published ? "The post in published" : "The post is unpublished"}
             <button onClick={handlePublish}>Publish</button>
             <button onClick={handleUnpublish}>Unpublish</button>
+            <Link to={`/editPost/${post.id}`}>Edit Post</Link>
             <h1>{post.title}</h1>
             <p>{post.text}</p>
             <p>{convertDate(post.createdAt)}</p>

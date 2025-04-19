@@ -1,6 +1,7 @@
 import Header from "./Header"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import convertDate from "../utils/convertDate";
 
 export default function PublishedPosts() {
     const [publishedPosts, setPublishedPosts] = useState([]);
@@ -14,7 +15,6 @@ export default function PublishedPosts() {
         }
         getPublishedPosts();
     }, [])
-
     return (
         <>
             <Header />
@@ -23,6 +23,7 @@ export default function PublishedPosts() {
                 <li key={post.id}>
                     <Link to={`/posts/${post.id}`}>{post.title}</Link>
                     Author: {post.user.username}
+                    <p>{convertDate(post.createdAt)}</p>
                 </li>
             ))}
         </>
