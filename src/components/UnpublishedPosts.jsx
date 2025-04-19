@@ -23,6 +23,7 @@ export default function UnpublishedPosts() {
                 {unpublishedPosts.map((post) => (
                     <li key={post.id}>
                         <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                        Author: {post.user.username}
                     </li>
                 ))}
             </ul>
