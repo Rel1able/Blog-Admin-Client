@@ -19,7 +19,8 @@ export default function Header() {
             {user ? <button onClick={handleLogout}>Log out</button> : <Link to="/login">Log in</Link>}
             
             <Link to="/posts">Posts</Link>
-            
+            <Link to="/posts/published">Published posts</Link>
+            <Link to="/posts/unpublished">Unpublished posts</Link>
         </>
     )
 }

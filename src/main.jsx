@@ -8,6 +8,8 @@ import CreatePost from './components/CreatePost.jsx';
 import Posts from './components/Posts.jsx';
 import SinglePost from './components/SinglePost.jsx';
 import EditPost from './components/EditPost.jsx';
+import PublishedPosts from './components/PublishedPosts.jsx';
+import UnpublishedPosts from './components/UnpublishedPosts.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +34,14 @@ const router = createBrowserRouter([
   {
     path: "/editPost/:id",
     element: <EditPost/>
+  },
+  {
+    path: "/posts/published",
+    element: <PublishedPosts />,
+  },
+  {
+    path: "/posts/unpublished",
+    element: <UnpublishedPosts/>
   }
 ])
 
