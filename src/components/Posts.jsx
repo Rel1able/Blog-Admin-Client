@@ -42,8 +42,9 @@ export default function Posts() {
             <h1>All posts</h1>
             {posts.length > 0 ? <ul>
                 {posts.map((post) => (
+
                     <li key={post.id}>
-                        {post.title}
+                        <Link to={`/posts/${post.id}`}>{post.title}</Link>
                         <button onClick={() => handleDelete(post.id)}>Delete post</button>
                         <Link to={`/editPost/${post.id}`}>Edit Post</Link>
                     </li>
