@@ -26,21 +26,21 @@ export default function CreatePost() {
         navigate("/posts");
     }
     return (
-        <>
+        <div className="container">
             <Header/>
             <h1>Create post</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form className="form" onSubmit={handleSubmit}>
+                <div className="input-div">
                     <label htmlFor="title">Title</label>
                     <input onChange={e => setTitle(e.target.value)} type="text" id="title"/>
                 </div>
-                <div>
+                <div className="input-div">
                     <label htmlFor="text">Text</label>
                     <textarea onChange={e => setText(e.target.value)} id="text" rows="22" cols="22">
                     </textarea>
                 </div>
-                <button type="submit">Create</button>
+                <button className="btn" type="submit">Create</button>
             </form>
-        </>
+        </div>
     )
 }

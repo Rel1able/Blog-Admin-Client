@@ -2,6 +2,7 @@ import Header from "./Header"
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import convertDate from "../utils/convertDate";
+import styles from "../styles/posts.module.css";
 
 export default function PublishedPosts() {
     const [publishedPosts, setPublishedPosts] = useState([]);
@@ -16,17 +17,20 @@ export default function PublishedPosts() {
         getPublishedPosts();
     }, [])
     return (
-        <>
+        <div className={styles.container}>
             <Header />
             <h1>Published Posts</h1>
-            {publishedPosts.map((post) => (
-                <li key={post.id}>
-                    <Link to={`/posts/${post.id}`}>{post.title}</Link>
+            <ul className={styles.postsList}>
+                {publishedPosts.map((post) => (
+                <li className={styles.postCard} key={post.id}>
+                    <Link className={styles.title} to={`/posts/${post.id}`}>{post.title}</Link>
                     Author: {post.user.username}
                     <p>{convertDate(post.createdAt)}</p>
                 </li>
             ))}
-        </>
+            </ul>
+            
+        </div>
         
     )
 }

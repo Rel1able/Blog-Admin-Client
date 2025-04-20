@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import Auth from "./AuthContext";
+import styles from "../styles/singlePost.module.css";
 
 export default function Comments({ postId }) {
     const [comments, setComments] = useState([]);
@@ -38,11 +39,11 @@ export default function Comments({ postId }) {
             <ul>
                 {
                     comments.map((comment) => (
-                        <li key={comment.id}>
-                            <p>{comment.user.username}</p>
+                        <li className={styles.comment} key={comment.id}>
+                            <p className={styles.commentAuthor}>{comment.user.username}</p>
                             <p>{comment.text}</p>
                             <p>{convertDate(comment.createdAt)}</p>
-                            <button onClick={() => handleDelete(comment.id)}>Delete</button>
+                            <button className="btn" onClick={() => handleDelete(comment.id)}>Delete</button>
                         </li>
                     ))
                 }

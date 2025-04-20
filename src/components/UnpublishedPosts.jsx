@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header"
 import convertDate from "../utils/convertDate";
+import styles from "../styles/posts.module.css";
 export default function UnpublishedPosts() {
     const [unpublishedPosts, setUnpublishedPosts] = useState([]);
 
@@ -16,18 +17,18 @@ export default function UnpublishedPosts() {
     }, [])
 
     return (
-        <>
+        <div className={styles.container}>
             <Header />
             <h1>Unpublished posts</h1>
-            <ul>
+            <ul className={styles.postsList}>
                 {unpublishedPosts.map((post) => (
-                    <li key={post.id}>
-                        <Link to={`/posts/${post.id}`}>{post.title}</Link>
+                    <li className={styles.postCard} key={post.id}>
+                        <Link className={styles.title} to={`/posts/${post.id}`}>{post.title}</Link>
                         Author: {post.user.username}
                         <p>{convertDate(post.createdAt)}</p>
                     </li>
                 ))}
             </ul>
-        </>
+        </div>
     )
 }

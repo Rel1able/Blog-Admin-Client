@@ -5,6 +5,7 @@ import Comments from "./Comments"
 import Header from "./Header";
 import Auth from "./AuthContext";
 import convertDate from "../utils/convertDate";
+import styles from "../styles/singlePost.module.css";
 export default function SinglePost() {
     const { id } = useParams();
     const [post, setPost] = useState([]);
@@ -46,17 +47,19 @@ export default function SinglePost() {
 
     console.log(id);
     return (
-        <>
+        <div className={styles.container}>
             <Header/>
-            <h1>Single Post</h1>
-            {post.published ? "The post in published" : "The post is unpublished"}
-            <button onClick={handlePublish}>Publish</button>
-            <button onClick={handleUnpublish}>Unpublish</button>
-            <Link to={`/editPost/${post.id}`}>Edit Post</Link>
-            <h1>{post.title}</h1>
-            <p>{post.text}</p>
-            <p>{convertDate(post.createdAt)}</p>
+            <h1 className={styles.status}>{post.published ? "The post in published" : "The post is unpublished"}</h1>
+            <button className="btn" onClick={handlePublish}>Publish</button>
+            <button className="btn" onClick={handleUnpublish}>Unpublish</button>
+            <Link className="btn" to={`/editPost/${post.id}`}>Edit Post</Link>
+            <div className={styles.post}>
+                <h1>{post.title}</h1>
+                <p>{post.text}</p>
+                <p>{convertDate(post.createdAt)}</p>
+            </div>
+
             <Comments postId={id} />
-        </>
+        </div>
     )
 }

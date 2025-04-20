@@ -2,6 +2,7 @@ import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import Header from "./Header";
 import Auth from "./AuthContext";
+import styles from "../styles/posts.module.css";
 
 export default function Posts() {
     const { token} = useContext(Auth.Context);
@@ -33,24 +34,25 @@ export default function Posts() {
 
     
     return (
-        <>
+        <div className={styles.container}>
             <Header />
             <div>
-                 <Link to="/create-post">Create Post</Link>
+                 <Link className="btn" to="/create-post">Create Post</Link>
             </div>
            
             <h1>All posts</h1>
-            {posts.length > 0 ? <ul>
+            {posts.length > 0 ? <ul className={styles.postsList}>
                 {posts.map((post) => (
 
-                    <li key={post.id}>
-                        <Link to={`/posts/${post.id}`}>{post.title}</Link>
-                        <button onClick={() => handleDelete(post.id)}>Delete post</button>
-                        <Link to={`/editPost/${post.id}`}>Edit Post</Link>
+                    <li className={styles.postCard} key={post.id}>
+                        <Link className={styles.title} to={`/posts/${post.id}`}>{post.title}</Link>
+                        <button className="btn" onClick={() => handleDelete(post.id)}>Delete post</button>
+                        <Link className="btn" to={`/editPost/${post.id}`}>Edit Post</Link>
+                        <p>Author: {post.user.username}</p>
                     </li>
                 ))}
             </ul> : <h1>Loading...</h1>}
             
-        </>
+        </div>
     )
 }

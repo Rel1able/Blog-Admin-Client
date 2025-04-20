@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    color: var(--secondary-color);
+}
+
+.status{
+    color: var(--secondary-color);
+}
+
+.post{
+    border: 2px solid var(--secondary-color);
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.comment{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--secondary-color);
+    background-color: var(--main-color);
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.commentAuthor{
+    font-size: 2rem;
+}
