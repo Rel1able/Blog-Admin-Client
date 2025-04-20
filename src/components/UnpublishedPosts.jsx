@@ -11,7 +11,6 @@ export default function UnpublishedPosts() {
             const res = await fetch("https://blog-api-rrvr.onrender.com/posts/unpublished")
             const resData = await res.json();
             setUnpublishedPosts(resData);
-            console.log(resData);
         }
         getUnpublishedPosts()
     }, [])

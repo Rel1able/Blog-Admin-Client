@@ -8,16 +8,13 @@ export default function EditPost() {
     const [text, setText] = useState("");
     const navigate = useNavigate();
     const {id} = useParams();
-    console.log("params", id);
 
     const { token} = useContext(Auth.Context);
-    console.log("The token is ", token)
 
     useEffect(() => {
         async function getPostById(id) {
             const post = await fetch(`https://blog-api-rrvr.onrender.com/posts/${id}`)
             const postData = await post.json();
-            console.log(postData);
             setTitle(postData.title);
             setText(postData.text);
         }
@@ -27,7 +24,7 @@ export default function EditPost() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const res = await fetch(`https://blog-api-rrvr.onrender.com/posts/${id}`, {
+        await fetch(`https://blog-api-rrvr.onrender.com/posts/${id}`, {
             method: "PUT",
             body: JSON.stringify({id, title, text}),
             headers: {
@@ -35,8 +32,6 @@ export default function EditPost() {
                 Authorization: "Bearer " + token
             }
         })
-        const resResult = await res.json();
-        console.log(resResult)
         navigate("/posts");
     }
     return (

@@ -19,10 +19,8 @@ export default function Login() {
             body: JSON.stringify({username, password})
         })
         const data = await response.json();
-                console.log(data);
         const userData = data.user;
         const token = data.token;
-        console.log(token);
         setUser(userData);
         setToken(token);
         localStorage.setItem("user", JSON.stringify(userData));

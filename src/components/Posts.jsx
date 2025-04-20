@@ -6,12 +6,10 @@ import styles from "../styles/posts.module.css";
 
 export default function Posts() {
     const { token} = useContext(Auth.Context);
-    console.log("Your token is", token)
     const [posts, setPosts] = useState([]);
     async function getPosts() {
          const res = await fetch("https://blog-api-rrvr.onrender.com/posts");
         const resData = await res.json();
-        console.log("posts", resData)
          setPosts(resData);
     }
 
@@ -27,7 +25,6 @@ export default function Posts() {
                 Authorization: "Bearer " + token
             }
         })
-        console.log("Post was deleted");
         getPosts()
     }
 

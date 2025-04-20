@@ -9,7 +9,6 @@ export default function Comments({ postId }) {
             const comments = await fetch(`https://blog-api-rrvr.onrender.com/posts/${postId}/comments`);
             const commentsData = await comments.json();
             setComments(commentsData);
-            console.log(commentsData);
         }
     useEffect(() => {
         
@@ -21,15 +20,13 @@ export default function Comments({ postId }) {
     }
 
     async function handleDelete(commentId) {
-        const res = await fetch(`https://blog-api-rrvr.onrender.com/posts/${postId}/comments/${commentId}`, {
+        await fetch(`https://blog-api-rrvr.onrender.com/posts/${postId}/comments/${commentId}`, {
             method: "DELETE",
             headers: {
                 "Content-Type": "application/json",
                 Authorization: "Bearer " + token
             }
         })
-        const resData = await res.json();
-        console.log(resData);
         getComments()
     }
     

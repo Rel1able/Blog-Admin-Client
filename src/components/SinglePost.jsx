@@ -17,7 +17,6 @@ export default function SinglePost() {
         async function getPost(id) {
             const res = await fetch(`https://blog-api-rrvr.onrender.com/posts/${id}`);
             const resData = await res.json();
-            console.log(resData);
             setPost(resData);
         }
         getPost(id);

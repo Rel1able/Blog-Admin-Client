@@ -9,11 +9,10 @@ export default function CreatePost() {
     const navigate = useNavigate();
 
     const { token, user  } = useContext(Auth.Context);
-    console.log("The token is ", token)
 
     async function handleSubmit(e) {
         e.preventDefault();
-        const res = await fetch("https://blog-api-rrvr.onrender.com/posts", {
+        await fetch("https://blog-api-rrvr.onrender.com/posts", {
             method: "POST",
             body: JSON.stringify({title, text, userId:user.id}),
             headers: {
@@ -21,8 +20,7 @@ export default function CreatePost() {
                 Authorization: "Bearer " + token
             }
         })
-        const resResult = await res.json();
-        console.log(resResult)
+
         navigate("/posts");
     }
     return (

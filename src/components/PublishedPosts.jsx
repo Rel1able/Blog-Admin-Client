@@ -12,7 +12,6 @@ export default function PublishedPosts() {
             const res = await fetch("https://blog-api-rrvr.onrender.com/posts/published");
             const resData = await res.json();
             setPublishedPosts(resData);
-            console.log(resData);
         }
         getPublishedPosts();
     }, [])
