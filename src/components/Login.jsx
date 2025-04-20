@@ -1,6 +1,8 @@
 import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom";
 import Auth from "./AuthContext";
+import Header from "./Header";
+import styles from "../styles/login.module.css";
 export default function Login() {
     const navigate = useNavigate();
     const [username, setUsername] = useState("");
@@ -32,19 +34,23 @@ export default function Login() {
     }
     return (
         <>
-            <h1>{user && "User exists"}</h1>
-            <h1>Log in page</h1>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor="username" id="username">Username</label>
-                    <input value={username} onChange={e => setUsername(e.target.value)} type="text" name="username" id="username"/>
-                </div>
-                <div>
-                    <label htmlFor="password" id="password">Password</label>
-                    <input value={password} onChange={e => setPassword(e.target.value)} type="password" name="password"/>
-                </div>
-                <button type="submit">Log in</button>
-            </form>
+            <Header />
+            <div className={styles.container}>
+                <h1>{user && "User exists"}</h1>
+                <h1>Please Log in</h1>
+                <form className="form" onSubmit={handleSubmit}>
+                    <div className="input-div">
+                        <label htmlFor="username" id="username">Username</label>
+                        <input value={username} onChange={e => setUsername(e.target.value)} type="text" name="username" id="username"/>
+                    </div>
+                    <div className="input-div">
+                        <label htmlFor="password" id="password">Password</label>
+                        <input value={password} onChange={e => setPassword(e.target.value)} type="password" name="password"/>
+                    </div>
+                    <button className="btn" type="submit">Log in</button>
+                </form>
+            </div>
+            
         </>
     )
 }

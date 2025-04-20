@@ -10,6 +10,7 @@ import SinglePost from './components/SinglePost.jsx';
 import EditPost from './components/EditPost.jsx';
 import PublishedPosts from './components/PublishedPosts.jsx';
 import UnpublishedPosts from './components/UnpublishedPosts.jsx';
+import "./index.css";
 const router = createBrowserRouter([
   {
     path: "/",

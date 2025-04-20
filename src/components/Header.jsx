@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import Auth from "./AuthContext";
 import { useContext } from "react";
+import styles from "../styles/header.module.css";
 export default function Header() {
 
     const { user, setUser,setToken } = useContext(Auth.Context);
@@ -13,14 +14,15 @@ export default function Header() {
     }
 
     return (
-        <>
-            <Link to="/">Home</Link>
+        <header className={styles.container}>
+            <Link className="btn" to="/">Home</Link>
             
-            {user ? <button onClick={handleLogout}>Log out</button> : <Link to="/login">Log in</Link>}
+
             
-            <Link to="/posts">Posts</Link>
-            <Link to="/posts/published">Published posts</Link>
-            <Link to="/posts/unpublished">Unpublished posts</Link>
-        </>
+            <Link className="btn" to="/posts">Posts</Link>
+            <Link className="btn" to="/posts/published">Published posts</Link>
+            <Link className="btn" to="/posts/unpublished">Unpublished posts</Link>
+             {user ? <button className="btn" onClick={handleLogout}>Log out</button> : <Link className="btn" to="/login">Log in</Link>}
+        </header>
     )
 }
